@@ -1,0 +1,39 @@
+:root {
+  --fontFamily: 'Montserrat'; 
+}
+
+html, body {
+  font-family: var(--fontFamily);
+  font-weight: 400;
+  height: 100%;
+  margin: 0;
+  background: #f2f3f7;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+img, svg {
+  vertical-align: middle;
+}
+
+:where(button) {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}
+
+:where(a) {
+  all: unset;
+  cursor: pointer;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+select {
+  cursor: pointer;
+}
