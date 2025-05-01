@@ -11,5 +11,11 @@ useHead({
 
 
 <template>
-  <NuxtPage />
+  <!-- header -->
+  <main>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </main>
+  <!-- footer -->
 </template>

@@ -1,3 +1,3 @@
 export const ROUTE = {
-  video: '/video'
+  information: '/information'
 }

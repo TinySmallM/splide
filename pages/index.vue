@@ -5,7 +5,7 @@ import { ROUTE } from '~/consts/consts'
 <template>
   <div class="container">
     <NuxtLoadingIndicator color="#00ff00" />
-    <NuxtLink class="link" :to="ROUTE.video">Перейти в раздел полезные видео</NuxtLink>
+    <NuxtLink class="link" :to="ROUTE.information">Перейти в раздел полезные видео</NuxtLink>
   </div>
 </template>
 
