@@ -15,12 +15,29 @@ type Props = {
 }
 
 const props = defineProps<Props>()
-const {element, isOpen, open, close} = useModal<Post>()
+
+const films = [
+  'https://kinescope.io/embed/sbGbsxzE4RRCMSu5xT8W16', 
+  'https://kinescope.io/embed/sbGbsxzE4RRCMSu5xT8W16',
+  'https://kinescope.io/embed/sbGbsxzE4RRCMSu5xT8W16',
+  'https://kinescope.io/embed/sbGbsxzE4RRCMSu5xT8W16',
+  'https://kinescope.io/embed/sbGbsxzE4RRCMSu5xT8W16',
+  'https://kinescope.io/embed/sbGbsxzE4RRCMSu5xT8W16',
+  'https://kinescope.io/embed/sbGbsxzE4RRCMSu5xT8W16',
+  'https://kinescope.io/embed/sbGbsxzE4RRCMSu5xT8W16',
+  'https://kinescope.io/embed/sbGbsxzE4RRCMSu5xT8W16',
+  'https://kinescope.io/embed/sbGbsxzE4RRCMSu5xT8W16',
+  'https://kinescope.io/embed/sbGbsxzE4RRCMSu5xT8W16'
+]
+
+const updatePosts = props.posts.map((item, index) => ({...item, kino: films[index]}));
+
+const {element, isOpen, open, close} = useModal<typeof updatePosts[number]>()
 </script>
 
 <template>
   <Splide :options="splideOptions">
-    <SplideSlide v-for="item in props.posts">
+    <SplideSlide v-for="item in updatePosts">
       <button class="slide__button" :key="item.id" @click="open(item)">
         <h2>{{ item.title }}</h2>
         <p>{{ item.body }}</p>
@@ -29,10 +46,19 @@ const {element, isOpen, open, close} = useModal<Post>()
   </Splide>
   <template v-if="isOpen && element">
     <ModalView :onClose="close">
-      <button>
-        <h2>{{ element.title }}</h2>
-        <p>{{ element.body }}</p>
-      </button>
+      <div class="iframe-container" v-if="element.kino.length > 0">
+        <iframe
+          class="iframe__video" 
+          title="video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          width="540" 
+          height="390" 
+          :src='element.kino' 
+          frameborder="0" 
+          allowfullscreen
+        >
+        </iframe>
+      </div>
     </ModalView>
   </template>
 </template>
@@ -52,5 +78,23 @@ const {element, isOpen, open, close} = useModal<Post>()
   box-shadow: 0 0 20px #0000001a;
   padding: 20px;
   cursor: pointer;
+}
+
+.Splide__inner {
+
+}
+
+.iframe-container {
+  padding-top: 56.25%;
+  position: relative;
+  width: 100%;
+}
+
+.iframe__video {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 </style>

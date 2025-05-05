@@ -55,9 +55,16 @@ const $modalContent= ref(null)
 }
 
 .ModalView__content {
+  width: calc(100% - 400px);
   background: #FFFFFF;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.24);
   visibility: visible;
+}
+
+@media (max-width: 992px) {
+  .ModalView__content {
+    width: calc(100% - 25px);
+  }
 }
 </style>
